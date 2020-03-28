@@ -3,7 +3,10 @@
 
 import pandas as pd 
 import math
-
+import numpy as np
+from sklearn import preprocessing, svm
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
 
 # Google stock data
 file_name = "./GOOG.csv"
@@ -34,3 +37,40 @@ print("Prediction length: ", forecast_out)
 df['label'] = df[forecast_col].shift(-forecast_out)
 df.dropna(inplace=True)
 print(df)
+
+# Features
+X = np.array(df.drop(['label'], 1))
+
+# Labels
+y = np.array(df['label'])
+
+# Splitting Data
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2)
+
+# Classifier
+clf = LinearRegression()
+
+# Training
+clf.fit(X_train, y_train)
+
+# Testing
+confidence = clf.score(X_test, y_test)
+
+print(confidence)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
