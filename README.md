@@ -6,3 +6,5 @@
 <p> Most of the code in this repo(aside from some self done excercises) are direct copy of tutorial series </p>
 <a href="https://www.youtube.com/playlist?list=PLQVvvaa0QuDfKTOs3Keq_kaG2P55YRn5v"> Machine Learnign with Python</a>
 
+<p> The Neural networks folder has code from the play list </p>
+<a href="https://www.youtube.com/playlist?list=PLQVvvaa0QuDcjD5BAw2DxE6OF2tius3V3">Neural Networks from Scratch </a>
