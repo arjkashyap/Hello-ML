@@ -81,7 +81,39 @@ class LinearRegression:
 
 		return m, c
 
+	def squared_error(self, y_line, y_orig):
+		"""
+		Helper function to compute the squared error of a line
+		with respect to the original label values.
+		This method is used to calculate the cofficient of determination
+		for R_squared method.
+		y_line -> Line whose squared error has to be computed
+		y_origin -> Original y values
+		"""
+		sq_error = sum(( y_line - y_orig )**2)
+		return sq_error
+
+
+	def coefficient_of_determination(self, y_line, y_orig):
+		"""
+		Function returns the value of cofficient of determination 
+		for  regression line y_line.
+		"""
+		y_mean_line = [ mean(y_orig) for y in y_orig ]     # Caclucated y_mean line 
+		y_line_error = self.squared_error(y_line, y_orig)     		# Regression line squared error
+		y_mean_line_error = self.squared_error(y_mean_line, y_orig)
+
+		COD = 1 - ( y_line_error / y_mean_line_error )
+		return COD
+
+
 	def fit(self, xs, ys):
+		"""
+		Function used to compute the regression model 
+		for the feature set xs and the label set ys.
+		It plots our regression line with respect to the 
+		training data.
+		"""
 		self.X = xs
 		self.y = ys
 		self.m, self.c = self.best_fit_mc(self.X, self.y)
@@ -90,15 +122,16 @@ class LinearRegression:
 		model_line = [ self.m*x + self.c for x in self.X ]
 		plt.scatter(self.X,self.y,color='red')	
 		plt.plot(self.X, model_line, color='#003F72')
-
+		plt.title("Regression Model")
 		plt.show()
-
+		return model_line
 
 def main():
 	model = LinearRegression(40)
 	X, y = model.genereate_data()
-	model.fit(X, y)
-
+	regression_line = model.fit(X, y)
+	r_squared = model.coefficient_of_determination(regression_line, y)
+	print("Squared error :", r_squared)
 
 if __name__ == '__main__':
 	main()
