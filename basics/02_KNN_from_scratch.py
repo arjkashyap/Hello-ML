@@ -71,10 +71,6 @@ class KNearestNeighbors:
 		return vote_result
 
 
-
-
-
-
 def main():
 	new_features = [5,7]
 	clf = KNearestNeighbors(3)
