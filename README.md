@@ -1,5 +1,5 @@
 # Machine Learning Basic Tutorial Using Python </h3>
-## A repository for storing all the code I wrote as a beginner in Machine Learning.
+### A repository for storing all the code I wrote as a beginner in Machine Learning.
 
 <hr/>
 
